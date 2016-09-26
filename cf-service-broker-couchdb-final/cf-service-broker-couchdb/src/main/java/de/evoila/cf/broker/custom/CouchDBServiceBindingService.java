@@ -44,14 +44,14 @@ public class CouchDBServiceBindingService extends BindingServiceImpl {
 
 		// Use service instance ID as user name and password (depends on
 		// implementation of ;do not use in production).
-		String adminUserName = serviceInstance.getId();
-		String adminPassword = serviceInstance.getId();
+		String adminUserName = "a"+serviceInstance.getId();
+		String adminPassword = "a"+serviceInstance.getId();
 
 		// The ID of Service Binding is used as database name in the CouchDB
 		// instance.
-		String databaseName = bindingId;
-		String userName = bindingId;
-		String password = bindingId;
+		String databaseName = "d" + bindingId;
+		String userName = "u"+bindingId;
+		String password = "p"+bindingId;
 
 		// The host's (the created CouchDB instance) IP and port are used for
 		// building the connection URI.
@@ -67,14 +67,6 @@ public class CouchDBServiceBindingService extends BindingServiceImpl {
 		// Add new user to database.
 		CouchDBConnectionHandler.addUserToDatabase(userName, newDatabase);
 
-		// } catch (Exception e) {
-		// String errorMessage = "Cannot reach service instance with IP " +
-		// host.getIp() + " and port " + host.getPort() + ".";
-		// log.error(errorMessage, e);
-		//
-		// throw new ServiceBrokerException(errorMessage, e);
-		// }
-
 		Map<String, Object> credentials = new HashMap<String, Object>();
 		credentials.put("uri", "http://" + userName + ":" + password + "@" + host.getIp() + ":" + host.getPort());
 
@@ -87,13 +79,13 @@ public class CouchDBServiceBindingService extends BindingServiceImpl {
 
 		// Use service instance ID as user name and password (depends on
 		// implementation of ;do not use in production).
-		String adminUserName = serviceInstance.getId();
-		String adminPassword = serviceInstance.getId();
+		String adminUserName = "a"+serviceInstance.getId();
+		String adminPassword = "a"+serviceInstance.getId();
 
 		// The ID of Service Binding is used as database name in the CouchDB
 		// instance.
-		String databaseName = bindingId;
-		String userName = bindingId;
+		String databaseName = "d" + bindingId;
+		String userName = "u"+bindingId;
 
 		ServerAddress host = serviceInstance.getHosts().get(0);
 
@@ -122,7 +114,5 @@ public class CouchDBServiceBindingService extends BindingServiceImpl {
 	protected RouteBinding bindRoute(ServiceInstance serviceInstance, String route) {
 		throw new UnsupportedOperationException();
 	}
-
-	
 
 }
