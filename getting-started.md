@@ -2,26 +2,28 @@
 
 To build a Service Broker for Cloud Foundry is not easy and normaly takes much time. With a common aproach and our well designed framework it is possible to do this in less time.
 
-**1. The first step to use the servicebroker framework is to fork the projekt on github.**
+**A. The first step to use the servicebroker framework is to fork the projekt on github.**
 
-**2. After this checkout with git on your working device.**
+**B. After this checkout with git on your working device.**
 
-**3. When the repository is checked out on your device you have to customize some namings. For this step we have writen the following "renaming guide".**
+**C. When the repository is checked out on your device you have to customize some namings. For this step we have writen the following "renaming guide".**
 
 ###Renaming Guide
 change namings of project and shippables
 
 The first step to use the servicebroker framework is to change namings of some folders, files and namings. To simplify this step in this description you find all folders, files and namings that must be changed.
 
-3.1. Change folder names
+1. Change folder names
 
-3.2. ./pom.xml -> module servicebroker
+2. ./pom.xml -> module servicebroker
 
-3.3 ./cf-service-broker-couchdb/pom.xml
-  3.3.1. artifact ld
-  3.3.2. name
+3. ./cf-service-broker-couchdb/pom.xml
+
+  i) artifact ld
   
-d) manifest.yml
+  ii) name
+  
+4. manifest.yml
 
   i) name
   
@@ -29,11 +31,11 @@ d) manifest.yml
   
   iii) path
   
-e) ExampleServiceBindingService.java
+5. ExampleServiceBindingService.java
 
-f) ExampleServiceCustomPropertyHandler.java
+6. ExampleServiceCustomPropertyHandler.java
 
-g) application.yml
+7. application.yml
 
   i) application.name
   
@@ -41,17 +43,17 @@ g) application.yml
   
   iii) logging.file
   
-h) container.cmd
+8. container.cmd
 
   i) example-template.sh 3x
   
-j) openstack/template.yml
+9. openstack/template.yml
 
   i) description
   
   ii) example-template.sh 3x
   
-k) service-definition.yml
+10. service-definition.yml
 
   i) id
   
@@ -65,20 +67,20 @@ k) service-definition.yml
 
 (  vi) plans.description  )
    
-**4. Define a service and it's plans in the service_definition.yml**
+**D. Define a service and it's plans in the service_definition.yml**
 
-**5. Create deployment scripts for openstack (template.yaml) and/or docker (container.cmd)**
+**E. Create deployment scripts for openstack (template.yaml) and/or docker (container.cmd)**
 
-**6. Add service specific dependencies to pom.xml**
+**F. Add service specific dependencies to pom.xml**
 
-**7. Implement service specific code in <Example>ServiceBindingService.java**
+**G. Implement service specific code in <Example>ServiceBindingService.java**
 
-**8. Add missing property values in application.yml**
+**H. Add missing property values in application.yml**
 
-**9. Add missing properties in ExampleServiceCustomPropertyHandler.java dependent on the properties used in your deployment scripts**
+**I. Add missing properties in ExampleServiceCustomPropertyHandler.java dependent on the properties used in your deployment scripts**
 
-**10. Service Broker is finished - build it with mvn install**
+**J. Service Broker is finished - build it with mvn install**
 
-**11. Complete your your manifest.yml and run cf push**
+**K. Complete your your manifest.yml and run cf push**
 
-**12. Register your Service Broker with the URL created by your manifest.yml with cf create-service-broker <ServiceBrokerName> admin cloudfoundry <URL>**
+**L. Register your Service Broker with the URL created by your manifest.yml with cf create-service-broker <ServiceBrokerName> admin cloudfoundry <URL>**
