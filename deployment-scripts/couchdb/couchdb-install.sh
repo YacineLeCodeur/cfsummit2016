@@ -21,17 +21,17 @@ chown -R couchdb:couchdb $DATADIR
 apt-get update
 
 #installing to manage source repositories
-apt-get install software-properties-common -y
+apt-get install software-properties-common -y --force-yes
 
 #PPA that will fetch latest CouchDB version from the repository
-add-apt-repository ppa:couchdb/stable -y
+add-apt-repository ppa:couchdb/stable -y --force-yes
 
 apt-get update
 
 apt-get remove couchdb couchdb-bin couchdb-common -yf
 
 #install CouchDB
-apt-get install couchdb -y
+apt-get install couchdb -y --force-yes
 
 #retrieve basic information by CouchDB
 curl localhost:5984
