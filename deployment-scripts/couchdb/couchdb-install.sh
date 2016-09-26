@@ -17,8 +17,6 @@ echo
 
 mkdir -p $DATADIR
 chown -R couchdb:couchdb $DATADIR
-#mkdir -p $CONFIG
-#chown -R couchdb:couchdb $CONFIG
 
 apt-get update
 

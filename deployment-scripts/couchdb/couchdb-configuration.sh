@@ -46,13 +46,6 @@ $DB_USER = $DB_PASSWORD
 [couchdb]
 database_dir = /var/lib/couchdb" > /etc/couchdb/local.d/custom.ini
 
-#adding custom config file to couchdb configuration files chain
-#couchdb -A $CONFIG
-
-#echo
-#echo "This are the used configuration files:"
-#couchdb -c
-#echo
 
 #restarting couchdb for hashing password in config
 # for openstack as environment
