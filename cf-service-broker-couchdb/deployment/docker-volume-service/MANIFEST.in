@@ -1,0 +1,2 @@
+include INSTALL.SH
+recursive-include etc *

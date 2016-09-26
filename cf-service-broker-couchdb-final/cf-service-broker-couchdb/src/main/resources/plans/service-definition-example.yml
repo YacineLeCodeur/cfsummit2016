@@ -1,0 +1,20 @@
+id: couchdb-service
+name: CouchDB
+description: CouchDB Service Instances
+bindable: true
+plans:
+  - id: couchdb-service-s
+    name: S
+    description: The most basic couchdb service plan currently available. Providing 25 MB of capacity in a couchdb service instance.
+    volumeSize: 25
+    volumeUnit: M
+    platform: DOCKER
+    connections: 4
+  - id: couchdb-service-m
+    name: M
+    description: The default couchdb service plan. Providing 1 GB of capcity in a couchdb service. Ideal for common usage in test stages.
+    volumeSize: 1
+    volumeUnit: G
+    platform: OPENSTACK
+    flavorId: 
+    connections: 20

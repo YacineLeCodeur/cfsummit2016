@@ -1,0 +1,107 @@
+heat_template_version: 2013-05-23
+description: Deployment Description for CouchDB
+parameters:
+  image_id:
+    type: string
+    description: Image used for servers
+  keypair:
+    type: string
+    description: SSH key to connect to the servers
+  flavor:
+    type: string
+    description: flavor used by the web servers
+  network_id:
+    type: string
+    description: Network used by the server
+  volume_size:
+    type: number
+    description: Size of the volume to be created.
+  availability_zone:
+    type: string
+    description: The Availability Zone to launch the instance.
+  repo_main:
+    type: string
+    description: Main repository for deployment scripts lookup
+  repo_monit:
+    type: string
+    description: Repository for monit deployment scripts lookup
+  repo_service:
+    type: string
+    description: Repository for deployment scripts lookup for the service to deploy
+  database_user:
+    type: string
+    description: User for databases
+  database_password:
+    type: string
+    description: Database password
+  database_number:
+    type: string
+    description: Number of databases
+  log_host:
+    type: string
+    description: Host to send log information to
+  log_port:
+    type: string
+    description: Port of the log host
+  log_protocol:
+    type: string
+    description: Protocol of connection to the log host
+resources:
+  floating_ip_assoc:
+    type: OS::Neutron::FloatingIPAssociation
+    properties:
+      floatingip_id: b5b469cf-3fd8-45a5-ada0-c2b71f91d138
+      port_id:  { get_resource: instance_port }
+      
+  instance_port:
+    type: OS::Neutron::Port
+    properties:
+      network_id: { get_param: network_id }
+      security_groups:
+        - all
+
+  nova_instance:
+    type: OS::Nova::Server
+    properties:
+      flavor: {get_param: flavor}
+      image: {get_param: image_id}
+      key_name: {get_param: keypair}
+      networks:
+      - port: { get_resource: instance_port }
+      user_data_format: RAW
+      security_groups:
+        - all
+      user_data:
+        str_replace:
+          template: |
+           #!/bin/bash
+            export REPOSITORY_COUCHDB=$repo_service
+            export REPOSITORY_MONIT=$repo_monit
+            export REPOSITORY_MAIN=$repo_main
+
+            # downloads and executes the template for the installation of the service
+            wget $REPOSITORY_COUCHDB/couchdb-template.sh --no-cache
+            chmod +x couchdb-template.sh
+            ./couchdb-template.sh -u $db_user -p $db_password -e openstack -l $log_host -m $log_port -c $log_protocol
+
+          params:
+            $repo_main: {get_param: repo_main}
+            $repo_monit: {get_param: repo_monit}
+            $repo_service: {get_param: repo_service}
+            $db_number: {get_param: database_number}
+            $db_password: {get_param: database_password}
+            $db_user: {get_param: database_user}
+            $log_host: {get_param: log_host}
+            $log_port: {get_param: log_port}
+            $log_protocol: {get_param: log_protocol}
+  cinder_volume:
+    type: OS::Cinder::Volume
+    properties:
+      size: { get_param: volume_size }
+      availability_zone: { get_param: availability_zone }
+  volume_attachment:
+    type: OS::Cinder::VolumeAttachment
+    properties:
+      volume_id: { get_resource: cinder_volume }
+      instance_uuid: { get_resource: nova_instance }
+      mountpoint: /dev/vdc

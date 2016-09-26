@@ -1,0 +1,14 @@
+---
+instances: 1
+timeout: 180
+memory: 1024M
+domain:
+applications:
+- name: couchdb
+  host: couchdb
+  path: target/ssb-couchdb.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  env:
+    CF_TARGET:
+    SPRING_PROFILES_ACTIVE: default,cloud
+    JAVA_OPTS: -Djava.security.egd=file:/dev/urandom

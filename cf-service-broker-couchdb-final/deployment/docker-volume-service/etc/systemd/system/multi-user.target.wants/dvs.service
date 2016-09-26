@@ -1,0 +1,11 @@
+[Unit]
+Description=Docker Volume Service, for receiving jobs via mqtt
+
+[Service]
+Type=forking
+PIDFile=/var/run/dvs.pid
+ExecStart=/usr/local/bin/dvs -d --broker $MQTT_BROKER
+Environment=MQTT_BROKER=localhost
+
+[Install]
+WantedBy=multi-user.target
