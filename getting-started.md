@@ -61,11 +61,11 @@ The first step to use the servicebroker framework is to change namings of some f
   
   iii) description
   
-( iv) plans.id            )
+  ( iv) plans.id            )
 
-(  v) plans.name          )
+  (  v) plans.name          )
 
-(  vi) plans.description  )
+  (  vi) plans.description  )
    
 ###D. Define a service and it's plans in the service_definition.yml
 
