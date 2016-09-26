@@ -9,6 +9,8 @@ echo "datadir = ${DATADIR}"
 echo "config_dir = ${CONFIG}"
 echo "environment = ${ENVIRONMENT}"
 echo "db_user = ${DB_USER}"
+echo "Only for demonstration and testing:"
+echo "db_user = ${DB_PASSWORD}"
 
 #Changes for security reasons
 #Changes ownership of the CouchDB directories
