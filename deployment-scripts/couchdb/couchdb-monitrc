@@ -1,0 +1,22 @@
+###############################################################################
+## MONITRC - Includes for CouchDB
+###############################################################################
+##
+## It is possible to include additional configuration parts from files or
+## directories to the monitrc-file. The path to the included monitrc files is
+## defined at the end of the monitrc file in "/etc/monit/monitrc".
+## The path for the includes has to be "/etc/monit.d/".
+##
+###############################################################################
+##
+## Check CouchDB-Server
+ check process couchdb with pidfile /usr/local/var/run/couchdb/couchdb.pid
+  group couchdb
+  group database
+    start program = "/etc/init.d/couchdb start -u couchdb"
+    stop  program = "/etc/init.d/couchdb stop -u couchdb"
+ if failed host 127.0.0.1 port 5984 then restart
+ if 5 restarts within 5 cycles then timeout
+ #
+ ## Alerts for CouchDB-Server
+ if changed pid then alert
