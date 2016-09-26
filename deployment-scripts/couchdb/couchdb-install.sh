@@ -24,7 +24,7 @@ apt-get update
 apt-get install software-properties-common -y --force-yes
 
 #PPA that will fetch latest CouchDB version from the repository
-add-apt-repository ppa:couchdb/stable -y --force-yes
+add-apt-repository ppa:couchdb/stable -y
 
 apt-get update
 
