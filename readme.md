@@ -85,3 +85,5 @@ The first step to use the servicebroker framework is to change namings of some f
 ###K. Complete your your manifest.yml and run cf push
 
 ###L. Register your Service Broker with the URL created by your manifest.yml with cf create-service-broker <ServiceBrokerName> admin cloudfoundry <URL>
+
+##Your new Service Broker is ready!
