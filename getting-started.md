@@ -2,13 +2,13 @@
 
 To build a Service Broker for Cloud Foundry is not easy and normaly takes much time. With a common aproach and our well designed framework it is possible to do this in less time.
 
-**A. The first step to use the servicebroker framework is to fork the projekt on github.**
+###A. The first step to use the servicebroker framework is to fork the projekt on github.
 
-**B. After this checkout with git on your working device.**
+###B. After this checkout with git on your working device.
 
-**C. When the repository is checked out on your device you have to customize some namings. For this step we have writen the following "renaming guide".**
+###C. When the repository is checked out on your device you have to customize some namings. For this step we have writen the following "renaming guide".
 
-###Renaming Guide
+####Renaming Guide
 change namings of project and shippables
 
 The first step to use the servicebroker framework is to change namings of some folders, files and namings. To simplify this step in this description you find all folders, files and namings that must be changed.
@@ -67,20 +67,20 @@ The first step to use the servicebroker framework is to change namings of some f
 
 (  vi) plans.description  )
    
-**D. Define a service and it's plans in the service_definition.yml**
+###D. Define a service and it's plans in the service_definition.yml
 
-**E. Create deployment scripts for openstack (template.yaml) and/or docker (container.cmd)**
+###E. Create deployment scripts for openstack (template.yaml) and/or docker (container.cmd)
 
-**F. Add service specific dependencies to pom.xml**
+###F. Add service specific dependencies to pom.xml
 
-**G. Implement service specific code in <Example>ServiceBindingService.java**
+###G. Implement service specific code in <Example>ServiceBindingService.java
 
-**H. Add missing property values in application.yml**
+###H. Add missing property values in application.yml
 
-**I. Add missing properties in ExampleServiceCustomPropertyHandler.java dependent on the properties used in your deployment scripts**
+###I. Add missing properties in ExampleServiceCustomPropertyHandler.java dependent on the properties used in your deployment scripts
 
-**J. Service Broker is finished - build it with mvn install**
+###J. Service Broker is finished - build it with mvn install
 
-**K. Complete your your manifest.yml and run cf push**
+###K. Complete your your manifest.yml and run cf push
 
-**L. Register your Service Broker with the URL created by your manifest.yml with cf create-service-broker <ServiceBrokerName> admin cloudfoundry <URL>**
+###L. Register your Service Broker with the URL created by your manifest.yml with cf create-service-broker <ServiceBrokerName> admin cloudfoundry <URL>
